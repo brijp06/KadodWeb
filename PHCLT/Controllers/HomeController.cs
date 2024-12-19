@@ -63,34 +63,35 @@ namespace HRMS.Controllers
         [HttpGet]
         public JsonResult verify(string Username, string Password)
         {
-            ClsSystem ob = new ClsSystem();
+            //ClsSystem ob = new ClsSystem();
 
-            LoginResponse loginResponse = ob.VerifyUser(Username, Password);
+            //LoginResponse loginResponse = ob.VerifyUser(Username, Password);
 
-            if (!String.IsNullOrEmpty(loginResponse.UserType))
-            {
-                Session["UserType"] = loginResponse.UserType;
-                Session["CustomerId"] = loginResponse.CustomerId;
-                Session["UserName"] = loginResponse.Username;
-                Session["UserId"] = loginResponse.UserId;
-                Session["UsesFullname"] = loginResponse.UsesFullname;
-                Session.Timeout = 10;
+            //if (!String.IsNullOrEmpty(loginResponse.UserType))
+            //{
+            //    Session["UserType"] = loginResponse.UserType;
+            //    Session["CustomerId"] = loginResponse.CustomerId;
+            //    Session["UserName"] = loginResponse.Username;
+            //    Session["UserId"] = loginResponse.UserId;
+            //    Session["UsesFullname"] = loginResponse.UsesFullname;
+            //    Session.Timeout = 10;
 
-                if (loginResponse.UserType == "User")
-                {
-                    //return RedirectToAction("UserDashboard", "Home");
-                    return Json(loginResponse, JsonRequestBehavior.AllowGet);
-                }
+            //    if (loginResponse.UserType == "User")
+            //    {
+            //        //return RedirectToAction("UserDashboard", "Home");
+            //        return Json(loginResponse, JsonRequestBehavior.AllowGet);
+            //    }
 
-                //return RedirectToAction("Dashboard", "Home");
-                return Json(loginResponse, JsonRequestBehavior.AllowGet);
-            }
-            else
-            {
-                var routeValues = new RouteValueDictionary(new { isAuth = "false" });
-                //return RedirectToAction("Login", "Home", routeValues);
-                return Json(loginResponse, JsonRequestBehavior.AllowGet);
-            }
+            //    //return RedirectToAction("Dashboard", "Home");
+            //    return Json(loginResponse, JsonRequestBehavior.AllowGet);
+            //}
+            //else
+            //{
+            //    var routeValues = new RouteValueDictionary(new { isAuth = "false" });
+            //    //return RedirectToAction("Login", "Home", routeValues);
+            //    return Json(loginResponse, JsonRequestBehavior.AllowGet);
+            //}
+            return Json("", JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult Logout()

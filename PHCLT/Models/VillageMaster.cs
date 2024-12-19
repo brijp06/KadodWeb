@@ -31,6 +31,8 @@ namespace PHCLT.Models
         public string Paymentamt { get; set; }
 
         public string Balanceamt { get; set; }
+
+        public string Itemname { get; set; }
     }
 
 }

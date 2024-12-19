@@ -36,29 +36,16 @@
     $("#btnsave").click(function () {
         var usname = $('#txtuserid').val();
         var upassword = $('#txtpass').val();
+        //window.location.href = '/KhatarSale/index?saltype="Khatar"';
+        window.location.href = '/KhatarSale/index?saltype=Khatar';
 
-
-        $.ajax({
-            url: '/Home/verify', // Replace with your actual API endpoint
-            data: { Username: usname, Password: upassword }, // Change this line
-            method: 'GET',
-            dataType: 'json',
-            success: function (result) {
-                var isChecked = $('#chkRemember').prop('checked');
-                if (isChecked) {
-                    localStorage.setItem("uname", usname);
-                    localStorage.setItem("upassword", upassword)
-                } else {
-
-                }
-                window.location.href = '/home/Dashboard';
-               
-            },
-            error: function (error) {
-                // Handle the error response
-                console.log(error);
-            }
-        });
+        
+    });
+    $("#btnsaveb").click(function () {
+        var usname = $('#txtuserid').val();
+        var upassword = $('#txtpass').val();
+        //window.location.href = '/KhatarSale/index?saltype="Khatar"';
+        window.location.href = '/KhatarSale/index?saltype=Bhandar';
     });
 
 });

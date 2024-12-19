@@ -2,29 +2,38 @@
     ViewBag.Title = "Login";
     Layout = "~/Views/_LayoutPage1.cshtml";
 }
+<style>
+    .content-center {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        display: block;
+        width: 100%;
+    }
+</style>
 
 <div class="main-wrapper">
-    <div class="container-fluid">
-        <div class="row d-flex justify-content-center align-items-center h-100">
+    <div class="container-fluid position-ralative vh-100">
+        <div class="row content-center">
             @*<div class="col-md-6 col-lg-6 col-xl-5">*@
+            <div class="logo-section">
+                <img src="~/images/display-dashboard.jpeg" class="img-fluid" alt="Sample image">
+            </div>
+            <div class="col-md-4 mx-auto">
                 <div class="logo-section">
-                    <img src="~/images/display-dashboard.jpg" class="img-fluid" alt="Sample image">
+                    <img src="~/images/new1.jpg" alt="Sample image">
                 </div>
-                <div class="col-md-6 col-lg-6 col-xl-4 offset-xl-1">
-                    @*<div class="logo-section">
-                        <img src="~/images/logo.png" alt="" class="img-fluid">
-                    </div>*@
-                    <div style="text-align: center; font-weight: bold; color: red;">
-                        <label class="form-label">Naik Consultant</label>
-                    </div>
-                    <div style="text-align: center; font-weight: bold; color: blue;">
+                <div style="text-align: center; font-weight: bold; color: blue;">
+                    <label class="form-label">Design & Developed By :-Om Sai Infotech</label>
+                </div>
+                @*<div style="text-align: center; font-weight: bold; color: blue;">
                         <label class="form-label">Address:-Sarikhurad,Amalsad,Navsari Mo:-9924903179</label>
-                    </div>
+                    </div>*@
 
-                    @*<form action="/Home/verify" method="post">*@
+                @*<form action="/Home/verify" method="post">*@
 
 
-                    <div class="form-outline mb-4">
+                @*<div class="form-outline mb-4">
                         <label class="form-label" for="form3Example3">Email address</label>
                         <input type="text" id="txtuserid" name="Username" class="form-control form-control-lg"
                                placeholder="Enter User Name" />
@@ -45,35 +54,39 @@
                                 Remember me
                             </label>
                         </div>
-                    </div>
+                    </div>*@
 
-                    <div class="text-center text-lg-start mt-4 pt-2">
-                        <button type="submit" id="btnsave" class="btn btn-primary btn-lg"
-                                style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                            Login
-                        </button>
-                        @*<a href="@Url.Action("Createuser","User")">
-                    <button type="button" class="btn btn-primary btn-lg"
+                <div class="text-center text-lg-start mt-4 pt-2 d-flex justify-content-center gap-3">
+                    <button type="button"  id="btnsave" class="btn btn-primary btn-lg"
                             style="padding-left: 2.5rem; padding-right: 2.5rem;">
-                        Create User
+                        ખાતર
                     </button>
-                </a>*@
-
-                    </div>
-
-                    @*</form>*@
+                    <button type="button" id="btnsaveb" class="btn btn-primary btn-lg"
+                            style="padding-left: 2.5rem; padding-right: 2.5rem;">
+                        ભંડાર
+                    </button>
                 </div>
+                <div style="text-align: center; font-weight: normal; color: blue;">
+                    <label class="form-label">
+                        પ્રિય ગ્રહક્મીત્રો,
+                        આપણી સંસ્થા ના સભાસદ મિત્રો અને સંસ્થા સાથે હરહંમેશ જોડાયેલા એવા ગ્રહક્મીત્રો અને આજુબાજુના ગામના ગ્રહક્મીત્રો માટે શ્રી કડોદ વિભાગ ફળ અને શાકભાજી ઉત્પાદકોની તથા વેચાણ કરનારી સહકારી મંડળી નુ નવું સાહસ  “KSM ONLINE ORDER APPLICATION AND WEBSITE” જે માં દરેક ગ્રાહક પોતાની જરૂરીયાત મુજબ ઓર્ડર લખીને મોકલી શકે છે.જે વસ્તુ અમો આપ સુધી શક્ય ઝડપે પહોચાડવાનો પ્રયત્ન કરીશું.
+                        ગ્રાહકનો સમય બચી શકે અને ઘર બેઠા સામાનની ડીલીવરી પણ મળી રહે એવા હેતુ ને આપના સહકારની જરૂર હોય આપ અમારી આ સુવિધાનો શક્ય તેટલો વધુ લાભ લો.
+                        કડોદ શાકભાજી મંડળી પરીવાર
+                    </label>
+                </div>
+                @*</form>*@
             </div>
+        </div>
     </div>
     @*<div class="d-flex flex-column flex-md-row text-center text-md-start justify-content-between align-items-center py-4 px-4 px-xl-5 bg-primary">
-        <div class="text-white mb-3 mb-md-0">
-            <ul class="list-box">
-                <li class="list-item">
-                    Copyright © 2020-2024. All rights reserved.
-                </li>
-            </ul>
-        </div>
-    </div>*@
+            <div class="text-white mb-3 mb-md-0">
+                <ul class="list-box">
+                    <li class="list-item">
+                        Copyright © 2020-2024. All rights reserved.
+                    </li>
+                </ul>
+            </div>
+        </div>*@
 
 
 </div>

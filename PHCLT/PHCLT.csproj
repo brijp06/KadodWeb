@@ -122,6 +122,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClsSystem.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KhatarSaleController.cs" />
     <Compile Include="Controllers\ReportsController.cs" />
     <Compile Include="Controllers\TransactionController.cs" />
     <Compile Include="Controllers\SubCenterEmpController.cs" />
@@ -2282,6 +2283,7 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\Khatarsale\Khatarsale.js" />
     <Content Include="Scripts\Layout\layout.js" />
     <Content Include="Scripts\Login\Login.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
@@ -2327,6 +2329,7 @@
     <Content Include="Views\User\CreateUser.cshtml" />
     <Content Include="Views\User\UserSubUpdate.cshtml" />
     <Content Include="Views\Reports\DailyReport.cshtml" />
+    <Content Include="Views\KhatarSale\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

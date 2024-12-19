@@ -1,0 +1,262 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    
+}
+
+<h2>ખાતર વેચાણ</h2>
+
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome Icons -->
+<!-- IonIcons -->
+<link href="~/plugins/fontawesome-free/css/all.min.css" rel="stylesheet" />
+<link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
+
+<!-- Theme style -->
+<link href="~/dist/css/adminlte.min.css" rel="stylesheet" />
+
+<!-- Google Font: Source Sans Pro -->
+<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
+<!-- Font Awesome -->
+<link rel="stylesheet" href="~/plugins/fontawesome-free/css/all.min.css">
+<!-- daterange picker -->
+<link rel="stylesheet" href="~/plugins/daterangepicker/daterangepicker.css">
+<!-- iCheck for checkboxes and radio inputs -->
+<link rel="stylesheet" href="~/plugins/icheck-bootstrap/icheck-bootstrap.min.css">
+<!-- Bootstrap Color Picker -->
+<link rel="stylesheet" href="~/plugins/bootstrap-colorpicker/css/bootstrap-colorpicker.min.css">
+<!-- Tempusdominus Bootstrap 4 -->
+<link rel="stylesheet" href="~/plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css">
+<!-- Select2 -->
+<link rel="stylesheet" href="~/plugins/select2/css/select2.min.css">
+<link rel="stylesheet" href="~/plugins/select2-bootstrap4-theme/select2-bootstrap4.min.css">
+<!-- Bootstrap4 Duallistbox -->
+<link rel="stylesheet" href="~/plugins/bootstrap4-duallistbox/bootstrap-duallistbox.min.css">
+<!-- BS Stepper -->
+<link rel="stylesheet" href="~/plugins/bs-stepper/css/bs-stepper.min.css">
+<!-- dropzonejs -->
+<link rel="stylesheet" href="~/plugins/dropzone/min/dropzone.min.css">
+<!-- BS Stepper -->
+<link rel="stylesheet" href="~/plugins/bs-stepper/css/bs-stepper.min.css">
+<!-- Theme style -->
+<link rel="stylesheet" href="~/dist/css/adminlte.min.css">
+<link href="~/css/loader.css" rel="stylesheet" />
+<!-- SweetAlert2 -->
+<link rel="stylesheet" href="~/plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
+<!-- Toastr -->
+<link rel="stylesheet" href="~/plugins/toastr/toastr.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css">
+<link rel="stylesheet" href="~/plugins/datatables-responsive/css/responsive.bootstrap4.min.css">
+<!-- SweetAlert CSS -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.css">
+<!-- SweetAlert JS -->
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.7.2/dist/sweetalert2.min.js"></script>
+<div class="row">
+    <input type="hidden" id="saltype" value="@ViewBag.saltype"/>
+    <div class="col-md-12">
+        <div class="card card-default">
+            <div class="card-header">
+                <h3 class="card-title">bs-stepper</h3>
+            </div>
+            <div class="card-body p-0">
+                <div class="bs-stepper">
+                    <div class="bs-stepper-header" role="tablist">
+                        <!-- your steps here -->
+                        <div class="step" data-target="#logins-part">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="logins-part" id="logins-part-trigger">
+                                <span class="bs-stepper-circle">1</span>
+                                <span class="bs-stepper-label">વિગત</span>
+                            </button>
+                        </div>
+                        <div class="line"></div>
+                        <div class="step" data-target="#information-part">
+                            <button type="button" class="step-trigger" role="tab" aria-controls="information-part" id="information-part-trigger">
+                                <span class="bs-stepper-circle">2</span>
+                                <span class="bs-stepper-label">વેચાણ વિગત</span>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="bs-stepper-content">
+                        <!-- your steps content here -->
+                        <div id="logins-part" class="content" role="tabpanel" aria-labelledby="logins-part-trigger">
+                            <div class="form-group">
+                                <label for="exampleInputEmail1">નામ</label>
+                                <input type="text" class="form-control" id="mname" placeholder="તમારું નામ દાખલ કરો">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">મોબાઈલ નંબર</label>
+                                <input type="text" class="form-control" id="mmobileno" placeholder="તમારું મોબાઈલ નંબર દાખલ કરો">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">ગામ નું નામ</label>
+                                <input type="text" class="form-control" id="mvillagename" placeholder="તમારું ગામ નું નામ દાખલ કરો">
+                            </div>
+                            <div class="form-group">
+                                <label for="exampleInputPassword1">શું તમે સભાસદ છો?</label>
+                                <div>
+                                    <input type="checkbox" id="yesCheckbox" name="membership" value="Yes">
+                                    <label for="yesCheckbox">હા (Yes)</label>
+                                    <input type="checkbox" id="noCheckbox" name="membership" value="No" style="margin-left: 10px;">
+                                    <label for="noCheckbox">ના (No)</label>
+                                </div>
+                            </div>
+                            <div class="form-group" id="paymentOptions" style="display: none;">
+                                <label for="paymentType">ચુકવણી નો પ્રકાર (Payment Type):</label>
+                                <select class="form-control" id="paymentType">
+                                    <option value="Cash">Cash</option>
+                                    <option value="Credit">Credit</option>
+                                </select>
+                            </div>
+                            <button class="btn btn-primary" onclick="stepper.next()">Next</button>
+                        </div>
+                        <div id="information-part" class="content" role="tabpanel" aria-labelledby="information-part-trigger">
+                            <div class="card-body">
+                                @*<div class="form-group">
+                                        <label for="exampleInputEmail1">Customer Id</label>
+                                        <input type="text" class="form-control" id="customerid">
+                                    </div>*@
+                                <div class="form-group">
+                                    <label for="productInput">વસ્તુ નું નામ(Item Name):</label>
+                                    <input type="text" class="form-control" id="productInput">
+                                </div>
+                                <div class="form-group">
+                                    <label for="productInput">જથ્થો.(Qty)</label>
+                                    <input type="text" class="form-control" name="modelNo" id="modelNo">
+                                </div>
+                                <div class="form-group">
+                                    <button class="btn btn-success my-1" type="button" id="addProduct">Add Product</button>
+                                </div>
+                                <div class="table-responsive">
+                                    <table id="productTable" class="table">
+                                        <thead>
+                                            <tr>
+                                                <th style="display:none">HiddenCustomersProduct</th>
+                                                <th>વસ્તુ નું નામ</th>
+                                                <th>જથ્થો</th>
+                                                <th>Action</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <!-- Table rows will be dynamically populated here -->
+                                        </tbody>
+                                    </table>
+                                </div>
+
+                            </div>
+                            <button class="btn btn-primary" onclick="stepper.previous()">Previous</button>
+                            @*<button type="submit" class="btn btn-primary">Submit</button>*@
+                            <a class="btn btn-app bg-danger" id="saveOrderButton">
+                                <i class="fas fa-inbox"></i> Orders
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- /.card-body -->
+            <div class="card-footer">
+                @*Visit <a href="https://github.com/Johann-S/bs-stepper/#how-to-use-it">bs-stepper documentation</a> for more examples and information about the plugin.*@
+            </div>
+        </div>
+        <!-- /.card -->
+    </div>
+</div>
+<!--<div class="card card-primary">
+
+
+    <input type="hidden" id="hdnCustomersProductId" value="" />
+
+
+    <div class="card-header row">
+        <div class="col-md-6 d-flex align-items-center">
+            <h3 class="card-title">વેચાણ </h3>
+        </div>
+    </div>-->
+<!-- /.card-header -->
+<!-- form start -->
+<!--<form id="customersProductForm">-->
+<!-- /.card-body -->
+<!--<div class="card-footer">
+            <button class="btn btn-primary" type="button" id="btnsave">Submit</button>
+        </div>
+    </form>
+</div>-->
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script src="~/plugins/jquery/jquery.min.js"></script>
+<!-- Bootstrap -->
+<!-- BS-Stepper -->
+<script src="~/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- AdminLTE -->
+<script src="~/dist/js/adminlte.js"></script>
+<!-- OPTIONAL SCRIPTS -->
+<script src="~/plugins/chart.js/Chart.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/dist/js/demo.js"></script>
+<!-- AdminLTE dashboard demo (This is only for demo purposes) -->
+<script src="~/dist/js/pages/dashboard3.js"></script>
+<!-- Bootstrap 4 -->
+<script src="~/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
+<!-- Select2 -->
+<script src="~/plugins/select2/js/select2.full.min.js"></script>
+<!-- Bootstrap4 Duallistbox -->
+<script src="~/plugins/bootstrap4-duallistbox/jquery.bootstrap-duallistbox.min.js"></script>
+<!-- InputMask -->
+<script src="~/plugins/moment/moment.min.js"></script>
+<script src="~/plugins/inputmask/jquery.inputmask.min.js"></script>
+<!-- date-range-picker -->
+<script src="~/plugins/daterangepicker/daterangepicker.js"></script>
+<!-- bootstrap color picker -->
+<script src="~/plugins/bootstrap-colorpicker/js/bootstrap-colorpicker.min.js"></script>
+<!-- Tempusdominus Bootstrap 4 -->
+<script src="~/plugins/tempusdominus-bootstrap-4/js/tempusdominus-bootstrap-4.min.js"></script>
+<!-- Bootstrap Switch -->
+<script src="~/plugins/bootstrap-switch/js/bootstrap-switch.min.js"></script>
+<!-- BS-Stepper -->
+<script src="~/plugins/bs-stepper/js/bs-stepper.min.js"></script>
+<!-- dropzonejs -->
+<script src="~/plugins/dropzone/min/dropzone.min.js"></script>
+<!-- AdminLTE App -->
+<script src="~/dist/js/adminlte.min.js"></script>
+<!-- AdminLTE for demo purposes -->
+<script src="~/dist/js/demo.js"></script>
+<script src="~/plugins/inputmask/inputmask.js"></script>
+<script src="~/plugins/inputmask/jquery.inputmask.js"></script>
+<script src="~/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="~/plugins/toastr/toastr.min.js"></script>
+<script src="~/plugins/datatables/jquery.dataTables.min.js"></script>
+<script src="~/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js"></script>
+<script src="~/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
+<script src="~/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
+<!-- date-range-picker -->
+<script src="~/Scripts/Khatarsale/Khatarsale.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        window.stepper = new Stepper(document.querySelector('.bs-stepper'))
+        const yesCheckbox = document.getElementById('yesCheckbox');
+        const noCheckbox = document.getElementById('noCheckbox');
+        const paymentOptions = document.getElementById('paymentOptions');
+
+        // Allow only one checkbox to be selected at a time
+        yesCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                noCheckbox.checked = false;
+                paymentOptions.style.display = 'block'; // Show payment options when Yes is checked
+            } else {
+                paymentOptions.style.display = 'none'; // Hide payment options if unchecked
+            }
+        });
+
+        noCheckbox.addEventListener('change', function () {
+            if (this.checked) {
+                yesCheckbox.checked = false;
+                paymentOptions.style.display = 'none'; // Hide payment options when No is checked
+            }
+        });
+    })
+</script>
+
