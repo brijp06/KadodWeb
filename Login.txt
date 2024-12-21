@@ -1,36 +1,31 @@
-The windows shared hosting account for akmabrama.in has been set up.
- 
-
-New Account Info
-
-Domain: akmabrama.in
-Username: akmabram
-Password: qd[2[e625kCALU
-Hosting Package: Silver
+Domain: naikconsultants.in
+Username: naikcons
+Password: e9QG9ld5D*)9Rp
+Hosting Package: Gold
 Control Panel (Plesk): https://server.genxwhosting.com:8443/
 Name Server 1: w1.genxwhosting.com
 Name Server 2: w2.genxwhosting.com
 
 Once your domain has Propagated
-FTP Hostname: www.akmabrama.in Webpage URL: http://akmabrama.in
-Control Panel: http://akmabrama.in:8880
+FTP Hostname: www.naikconsultants.in Webpage URL: http://naikconsultants.in
+Control Panel: http://naikconsultants.in:8880
 Mail settings
 
 Catch all email with your default email account
 
-POP3 Host Address : mail.akmabrama.in
+POP3 Host Address : mail.naikconsultants.in
 
-SMTP Host Address: mail.akmabrama.in
+SMTP Host Address: mail.naikconsultants.in
 
-Username: akmabram
+Username: naikcons
 
-Password: qd[2[e625kCALU
+Password: e9QG9ld5D*)9Rp
 
 Additional mail accounts that you add
 
-POP3 Host Address : mail.akmabrama.in
+POP3 Host Address : mail.naikconsultants.in
 
-SMTP Host Address: mail.akmabrama.in
+SMTP Host Address: mail.naikconsultants.in
 
 Username : The FULL email address that you are picking up from (e.g. info@yourdomain.com).
 

@@ -47,5 +47,9 @@
         //window.location.href = '/KhatarSale/index?saltype="Khatar"';
         window.location.href = '/KhatarSale/index?saltype=Bhandar';
     });
+    $("#btnsavebs").click(function () {
+        //window.location.href = '/KhatarSale/index?saltype="Khatar"';
+        window.location.href = '/KhatarSale/Indexfrom';
+    });
 
 });

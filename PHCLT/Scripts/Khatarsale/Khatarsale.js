@@ -12,6 +12,63 @@
             .replace(/(\..*?)\..*/g, '$1') // Allow only one decimal point
             .replace(/^(\d*\.\d{2}).*/, '$1')); // Restrict to two decimal places
     });
+    function validateForm() {
+        let isValid = true;
+
+        // Validate name
+        if ($('#mname').val().trim() === "") {
+            isValid = false;
+        }
+
+        // Validate mobile number
+        const mobileNumber = $('#mmobileno').val().trim();
+        if (mobileNumber === "" || !/^\d{10}$/.test(mobileNumber)) {
+            isValid = false;
+        }
+
+        // Validate village name
+        if ($('#mvillagename').val().trim() === "") {
+            isValid = false;
+        }
+
+        // Validate membership checkboxes
+        if (!$('#yesCheckbox').is(':checked') && !$('#noCheckbox').is(':checked')) {
+            isValid = false;
+        }
+
+        // Show or hide payment options based on membership selection
+        if ($('#yesCheckbox').is(':checked')) {
+            $('#paymentOptions').show();
+            if ($('#paymentType').val() === null) {
+                isValid = false;
+            }
+        } else {
+            $('#paymentOptions').hide();
+        }
+
+        // Enable or disable the Next button
+        $('#nextButton').prop('disabled', !isValid);
+    }
+
+    // Attach event listeners for validation
+    $('#mname, #mmobileno, #mvillagename, #paymentType').on('input', validateForm);
+    $('#yesCheckbox, #noCheckbox').on('change', validateForm);
+
+    // Disable the Next button initially
+    $('#nextButton').prop('disabled', true);
+
+    // Handle the Next button click
+    $('#nextButton').on('click', function (e) {
+        e.preventDefault();
+        //alert("તમારું ડેટા માન્ય છે!");
+        stepper.next(); // Move to the next step
+    });
+
+    // Handle the Previous button click
+    $('#previousButton').on('click', function (e) {
+        e.preventDefault();
+        stepper.previous(); // Move to the previous step
+    });
     // Click event for the Add Product button
     $('#addProduct').on('click', function () {
         // Get values from input fields
@@ -87,7 +144,7 @@
         $.ajax({
             type: 'POST',
             url: '/KhatarSale/Addsale',
-            data: { type:type,mname: mname, mmobileno: mmobileno, mvillagename: mvillagename, paymentType: paymentType, membership: membership, products: JSON.stringify(products) },
+            data: { type: type, mname: mname, mmobileno: mmobileno, mvillagename: mvillagename, paymentType: paymentType, membership: membership, products: JSON.stringify(products) },
             success: function (result) {
                 //var msg = "તમારો બીલ નંબર છે :- " + result.opmessage + "";
                 //Swal.fire({

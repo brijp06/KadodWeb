@@ -6,6 +6,9 @@ using System.Web.Mvc;
 using PHCLT.Models;
 using System.Data;
 using Newtonsoft.Json;
+using System.IO;
+using System.Data.SqlClient;
+using System.Configuration;
 
 namespace PHCLT.Controllers
 {
@@ -16,6 +19,10 @@ namespace PHCLT.Controllers
         public ActionResult Index(string saltype)
         {
             ViewBag.saltype = saltype;
+            return View();
+        }
+        public ActionResult Indexfrom()
+        {
             return View();
         }
         public class Resultpass<T>
@@ -55,6 +62,73 @@ namespace PHCLT.Controllers
                 throw ex;
             }
         }
+        [HttpPost]
+        public JsonResult Addsalefrom(FormCollection formData)
+        {
+            try
+            {
+                Resultpass<object> result = new Resultpass<object>();
+
+                // Get the uploaded file
+                var profilePhoto = Request.Files["profilePhoto"];
+                string fileExtension = System.IO.Path.GetExtension(profilePhoto.FileName).ToLower();
+                var mname = Request.Form["mname"];
+                var Bmobileno = Request.Form["Bmobileno"];
+                var billtype = Request.Form["billtype"];
+                var ismember = Request.Form["ismember"];
+                var Mvillagename = Request.Form["Mvillagename"];
+                int mtype = 0;
+                if (ismember == "Yes")
+                {
+                    mtype = 1;
+                }
+                var dono = ob.FindOneString("SELECT ISNULL(MAX(Billid), 0) + 1 AS Billid FROM billmain");
+
+                if (profilePhoto != null && profilePhoto.ContentLength > 0)
+                {
+                    using (var memoryStream = new MemoryStream())
+                    {
+                        profilePhoto.InputStream.CopyTo(memoryStream);
+                        var imageData = memoryStream.ToArray();
+
+                        string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ToString();
+                        using (var connection = new SqlConnection(connectionString))
+                        {
+                            string query = "INSERT INTO billmain(Billid,ImageData, mname, Bmobileno, billtype, ismember, Mvillagename,isn,isbill,Witemname, Wqty,depttype,ftype) VALUES (@dono,@ImageData, @mname, @Bmobileno, @billtype, @ismember, @Mvillagename,@isn,@isbill,@a,@b,@c,@ftype)";
+
+                            using (var command = new SqlCommand(query, connection))
+                            {
+                                command.Parameters.AddWithValue("@dono", dono);
+                                command.Parameters.AddWithValue("@ImageData", imageData);
+                                command.Parameters.AddWithValue("@mname", mname);
+                                command.Parameters.AddWithValue("@Bmobileno", Bmobileno);
+                                command.Parameters.AddWithValue("@billtype", billtype);
+                                command.Parameters.AddWithValue("@ismember", mtype);
+                                command.Parameters.AddWithValue("@Mvillagename", Mvillagename);
+                                command.Parameters.AddWithValue("@isn", 0);
+                                command.Parameters.AddWithValue("@isbill", 0);
+                                command.Parameters.AddWithValue("@a", "Image");
+                                command.Parameters.AddWithValue("@b", 0);
+                                command.Parameters.AddWithValue("@c", "Image");
+                                command.Parameters.AddWithValue("@ftype", fileExtension);
+                                connection.Open();
+                                command.ExecuteNonQuery();
+                            }
+                        }
+                    }
+                }
+
+                result.opstatus = true;
+                result.opmessage = dono;
+                return Json(result, JsonRequestBehavior.AllowGet);
+            }
+            catch (Exception ex)
+            {
+                return Json(new { error = ex.Message }, JsonRequestBehavior.AllowGet);
+            }
+        }
+
+
 
     }
 }
